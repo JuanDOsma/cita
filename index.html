@@ -1,103 +1,210 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nuestra Cita 💜</title>
+    <meta charset="UTF-8">
+    <title>Una cita contigo 💖</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-<style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI', sans-serif;}
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: radial-gradient(circle at top, #ffdde1 0%, #ee9ca7 45%, #3d1238 100%);
+            color: #fff;
+        }
 
-body{
-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-color:white;
-text-align:center;
-transition:1s;
-background:linear-gradient(135deg,#ff4da6,#d633ff);
-}
+        .card {
+            background: rgba(0, 0, 0, 0.35);
+            backdrop-filter: blur(8px);
+            border-radius: 20px;
+            padding: 28px 24px 32px;
+            max-width: 420px;
+            width: 92%;
+            box-shadow: 0 18px 45px rgba(0, 0, 0, 0.45);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
 
-.card{
-background:rgba(0,0,0,0.4);
-padding:40px;
-border-radius:25px;
-width:90%;
-max-width:500px;
-backdrop-filter:blur(10px);
-box-shadow:0 0 30px rgba(255,0,255,0.6);
-}
+        .card::before {
+            content: "♥";
+            font-size: 180px;
+            color: rgba(255, 255, 255, 0.06);
+            position: absolute;
+            right: -20px;
+            top: -40px;
+            transform: rotate(-15deg);
+        }
 
-button{
-margin:10px;
-padding:12px 20px;
-border:none;
-border-radius:30px;
-cursor:pointer;
-font-weight:bold;
-background:#ff66cc;
-color:white;
-transition:0.3s;
-}
+        .small-text {
+            font-size: 0.9rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #ffdfe9;
+            margin-bottom: 8px;
+        }
 
-button:hover{
-transform:scale(1.1);
-background:#ff1a8c;
-}
+        h1 {
+            font-size: 1.9rem;
+            margin-bottom: 10px;
+        }
 
-.fade{
-animation:fade 1s ease forwards;
-}
+        .name {
+            color: #ffb6d9;
+        }
 
-@keyframes fade{
-from{opacity:0;}
-to{opacity:1;}
-}
-</style>
+        .message {
+            margin: 14px 0 18px;
+            line-height: 1.5;
+            font-size: 0.98rem;
+        }
+
+        .details {
+            background: rgba(255, 255, 255, 0.06);
+            border-radius: 14px;
+            padding: 14px 14px 10px;
+            margin-bottom: 18px;
+            font-size: 0.92rem;
+            text-align: left;
+        }
+
+        .details h2 {
+            font-size: 1rem;
+            margin-bottom: 6px;
+            color: #ffd6ec;
+        }
+
+        .details p,
+        .details ul {
+            margin-left: 4px;
+        }
+
+        .details ul {
+            list-style: "♥  ";
+            padding-left: 12px;
+        }
+
+        .details li {
+            margin-bottom: 4px;
+        }
+
+        .question {
+            margin: 8px 0 18px;
+            font-weight: 600;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            border: none;
+            border-radius: 999px;
+            padding: 10px 20px;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-main {
+            background: linear-gradient(135deg, #ff4b8b, #ff8fa3);
+            color: #fff;
+            box-shadow: 0 6px 15px rgba(255, 105, 180, 0.45);
+        }
+
+        .btn-main:hover {
+            transform: translateY(-1px) scale(1.03);
+            box-shadow: 0 9px 20px rgba(255, 105, 180, 0.6);
+        }
+
+        .btn-ghost {
+            background: transparent;
+            color: #ffd6ec;
+            border: 1px solid rgba(255, 214, 236, 0.7);
+        }
+
+        .btn-ghost:hover {
+            background: rgba(255, 214, 236, 0.12);
+            transform: translateY(-1px);
+        }
+
+        .footer-text {
+            margin-top: 14px;
+            font-size: 0.85rem;
+            color: #ffe3f3;
+        }
+
+        .signature {
+            margin-top: 4px;
+            font-style: italic;
+            color: #ffb6d9;
+        }
+
+        @media (max-width: 480px) {
+            .card {
+                padding: 22px 18px 26px;
+            }
+
+            h1 {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
 </head>
-
 <body>
+    <div class="card">
+        <div class="small-text">Para la chica más especial</div>
+        <h1>Oye, <span class="name">mi amor</span> 💘</h1>
 
-<div class="card">
-<h1>💜 Elige nuestra cita perfecta 💖</h1>
+        <p class="message">
+            Llevo un tiempo pensando en algo…
+            Me encantaría tener una cita muy especial contigo, solo tú y yo,
+            sin prisas y disfrutando cada momento juntos.
+        </p>
 
-<div id="choices">
-<button onclick="choose('playa')">🌅 Playa al atardecer</button>
-<button onclick="choose('cena')">🍝 Cena elegante</button>
-<button onclick="choose('mirador')">🌌 Mirador bajo las estrellas</button>
-<button onclick="choose('parque')">🎢 Parque de diversiones</button>
-</div>
+        <div class="details">
+            <h2>La cita que imagino:</h2>
+            <p><strong>Fecha:</strong> Sábado 22 de febrero</p>
+            <p><strong>Hora:</strong> 7:30 p.m.</p>
+            <p><strong>Lugar:</strong> Nuestro restaurante favorito 🍝✨</p>
+            <ul>
+                <li>Cena rica y tranquila</li>
+                <li>Un paseo después, de la mano</li>
+                <li>Muchas risas, abrazos y besos</li>
+            </ul>
+        </div>
 
-<div id="result"></div>
-</div>
+        <p class="question">
+            ¿Aceptas tener esta cita conmigo?
+        </p>
 
-<script>
-function choose(option){
-const result=document.getElementById("result");
-const body=document.body;
+        <div class="buttons">
+            <!-- Puedes cambiar el href por un link a tu WhatsApp, por ejemplo -->
+            <a href="https://wa.me/3000000000?text=¡Sí,%20acepto%20la%20cita!%20💖" class="btn btn-main">
+                Claro que sí 💞
+            </a>
+            <a href="#si" class="btn btn-ghost">
+                Déjame pensarlo 2 segundos 😏
+            </a>
+        </div>
 
-if(option==="playa"){
-body.style.background="linear-gradient(135deg,#ff9966,#ff5e62)";
-result.innerHTML="<div class='fade'>🌅 Caminamos juntos mientras el sol se esconde...<br>Te tomo la mano y te digo que este momento contigo es perfecto 💕</div>";
-}
-
-if(option==="cena"){
-body.style.background="linear-gradient(135deg,#8e2de2,#4a00e0)";
-result.innerHTML="<div class='fade'>🍷 Velas, miradas y sonrisas...<br>No necesito nada más que tu compañía esta noche 💜</div>";
-}
-
-if(option==="mirador"){
-body.style.background="linear-gradient(135deg,#141e30,#243b55)";
-result.innerHTML="<div class='fade'>🌌 Bajo las estrellas te susurro...<br>Eres mi lugar favorito en todo el universo ✨</div>";
-}
-
-if(option==="parque"){
-body.style.background="linear-gradient(135deg,#ff4e50,#f9d423)";
-result.innerHTML="<div class='fade'>🎢 Risas, adrenalina y abrazos...<br>Contigo cada momento es una aventura 💖</div>";
-}
-}
-</script>
-
+        <p id="si" class="footer-text">
+            Spoiler: sé que vas a decir que sí, porque
+            <span class="signature">contigo todo es más bonito 💖</span>
+        </p>
+    </div>
 </body>
 </html>
