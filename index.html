@@ -1,210 +1,418 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>Una cita contigo 💖</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: radial-gradient(circle at top, #ffdde1 0%, #ee9ca7 45%, #3d1238 100%);
-            color: #fff;
-        }
-
-        .card {
-            background: rgba(0, 0, 0, 0.35);
-            backdrop-filter: blur(8px);
-            border-radius: 20px;
-            padding: 28px 24px 32px;
-            max-width: 420px;
-            width: 92%;
-            box-shadow: 0 18px 45px rgba(0, 0, 0, 0.45);
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .card::before {
-            content: "♥";
-            font-size: 180px;
-            color: rgba(255, 255, 255, 0.06);
-            position: absolute;
-            right: -20px;
-            top: -40px;
-            transform: rotate(-15deg);
-        }
-
-        .small-text {
-            font-size: 0.9rem;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            color: #ffdfe9;
-            margin-bottom: 8px;
-        }
-
-        h1 {
-            font-size: 1.9rem;
-            margin-bottom: 10px;
-        }
-
-        .name {
-            color: #ffb6d9;
-        }
-
-        .message {
-            margin: 14px 0 18px;
-            line-height: 1.5;
-            font-size: 0.98rem;
-        }
-
-        .details {
-            background: rgba(255, 255, 255, 0.06);
-            border-radius: 14px;
-            padding: 14px 14px 10px;
-            margin-bottom: 18px;
-            font-size: 0.92rem;
-            text-align: left;
-        }
-
-        .details h2 {
-            font-size: 1rem;
-            margin-bottom: 6px;
-            color: #ffd6ec;
-        }
-
-        .details p,
-        .details ul {
-            margin-left: 4px;
-        }
-
-        .details ul {
-            list-style: "♥  ";
-            padding-left: 12px;
-        }
-
-        .details li {
-            margin-bottom: 4px;
-        }
-
-        .question {
-            margin: 8px 0 18px;
-            font-weight: 600;
-        }
-
-        .buttons {
-            display: flex;
-            gap: 10px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            border: none;
-            border-radius: 999px;
-            padding: 10px 20px;
-            font-size: 0.95rem;
-            cursor: pointer;
-            transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .btn-main {
-            background: linear-gradient(135deg, #ff4b8b, #ff8fa3);
-            color: #fff;
-            box-shadow: 0 6px 15px rgba(255, 105, 180, 0.45);
-        }
-
-        .btn-main:hover {
-            transform: translateY(-1px) scale(1.03);
-            box-shadow: 0 9px 20px rgba(255, 105, 180, 0.6);
-        }
-
-        .btn-ghost {
-            background: transparent;
-            color: #ffd6ec;
-            border: 1px solid rgba(255, 214, 236, 0.7);
-        }
-
-        .btn-ghost:hover {
-            background: rgba(255, 214, 236, 0.12);
-            transform: translateY(-1px);
-        }
-
-        .footer-text {
-            margin-top: 14px;
-            font-size: 0.85rem;
-            color: #ffe3f3;
-        }
-
-        .signature {
-            margin-top: 4px;
-            font-style: italic;
-            color: #ffb6d9;
-        }
-
-        @media (max-width: 480px) {
-            .card {
-                padding: 22px 18px 26px;
-            }
-
-            h1 {
-                font-size: 1.6rem;
-            }
-        }
-    </style>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Para mi Princesa 🌻</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,400;1,500&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --gold: #f5c518;
+      --amber: #e8a000;
+      --deep: #7c4a00;
+      --cream: #fffbea;
+      --bark: #4a2c00;
+      --leaf: #4a7c3f;
+      --rose: #e8799a;
+    }
+ 
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+ 
+    body {
+      background: #0d0800;
+      min-height: 100vh;
+      font-family: 'Cormorant Garamond', serif;
+      overflow-x: hidden;
+      cursor: none;
+    }
+ 
+    /* ── Sky gradient ── */
+    .sky {
+      position: fixed; inset: 0; z-index: 0;
+      background: radial-gradient(ellipse at 50% 20%, #3d1f00 0%, #1a0900 50%, #000000 100%);
+    }
+    .sky::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, #f5c51822 0%, transparent 60%);
+    }
+ 
+    /* ── Stars ── */
+    #stars { position: fixed; inset: 0; z-index: 1; pointer-events: none; }
+ 
+    /* ── Cursor ── */
+    .cursor {
+      width: 20px; height: 20px;
+      background: radial-gradient(circle, #fff9 40%, #f5c51866);
+      border-radius: 50%;
+      position: fixed; top: 0; left: 0;
+      pointer-events: none; z-index: 9999;
+      transition: transform 0.1s ease;
+      box-shadow: 0 0 12px 6px #f5c51844;
+    }
+ 
+    /* ── Main layout ── */
+    .page {
+      position: relative; z-index: 5;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 3rem 1.5rem 12rem;
+    }
+ 
+    /* ── Crown / header ── */
+    .crown-wrap {
+      margin-bottom: 0.5rem;
+      animation: floatGently 5s ease-in-out infinite;
+    }
+    @keyframes floatGently {
+      0%,100% { transform: translateY(0); }
+      50%      { transform: translateY(-12px); }
+    }
+ 
+    /* ── Title block ── */
+    .intro {
+      font-size: clamp(0.85rem, 2vw, 1rem);
+      letter-spacing: 0.3em;
+      color: #f5c51888;
+      text-transform: uppercase;
+      margin-bottom: 0.4rem;
+      animation: fadeIn 1.5s 0.3s both;
+    }
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3.2rem, 9vw, 6.5rem);
+      font-weight: 700;
+      color: var(--gold);
+      text-align: center;
+      line-height: 1;
+      text-shadow: 0 0 60px #f5c51866, 0 2px 0 #3d1f00;
+      animation: fadeIn 1.5s 0.5s both;
+    }
+    h1 em {
+      font-style: italic;
+      font-weight: 400;
+      color: #fff9e6;
+      display: block;
+      font-size: 0.7em;
+      letter-spacing: 0.05em;
+    }
+ 
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+ 
+    /* ── Divider ── */
+    .divider {
+      width: 180px; height: 1px;
+      background: linear-gradient(to right, transparent, #f5c518, transparent);
+      margin: 1.8rem auto;
+      animation: fadeIn 1.5s 0.8s both;
+    }
+ 
+    /* ── Poem card ── */
+    .poem-wrap {
+      max-width: 560px; width: 100%;
+      animation: fadeIn 1.5s 1s both;
+    }
+    .poem {
+      background: linear-gradient(135deg, #1a0e0088, #2c1500aa);
+      border: 1px solid #f5c51833;
+      border-radius: 2px;
+      padding: 2.8rem 3rem;
+      position: relative;
+      box-shadow: 0 0 60px #f5c51811, inset 0 0 40px #00000033;
+    }
+    .poem::before, .poem::after {
+      content: '✦';
+      position: absolute;
+      font-size: 1.2rem;
+      color: #f5c518;
+      opacity: 0.5;
+    }
+    .poem::before { top: 1rem; left: 1rem; }
+    .poem::after  { bottom: 1rem; right: 1rem; }
+ 
+    .poem-line {
+      display: block;
+      font-size: clamp(1.05rem, 2.5vw, 1.25rem);
+      font-style: italic;
+      color: #fff9e6;
+      line-height: 2;
+      opacity: 0;
+      animation: lineReveal 0.8s forwards;
+    }
+    .poem-line.pause {
+      height: 0.8em;
+    }
+    .poem-line.gold {
+      font-style: normal;
+      font-weight: 500;
+      color: var(--gold);
+      font-size: clamp(1.1rem, 2.8vw, 1.35rem);
+      letter-spacing: 0.03em;
+    }
+    .poem-line.signature {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: clamp(1.3rem, 3vw, 1.6rem);
+      color: #f5c518;
+      margin-top: 1rem;
+      text-align: right;
+    }
+    @keyframes lineReveal {
+      from { opacity: 0; transform: translateX(-10px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+ 
+    /* ── Flower row ── */
+    .flower-row {
+      position: fixed; bottom: 0; left: 0; right: 0;
+      height: 180px;
+      display: flex; align-items: flex-end; justify-content: space-around;
+      padding: 0 0.5rem;
+      pointer-events: none; z-index: 6;
+    }
+    .gf {
+      animation: sway var(--sw) var(--sd) ease-in-out infinite alternate;
+      transform-origin: bottom center;
+    }
+    @keyframes sway {
+      from { transform: rotate(var(--ra)); }
+      to   { transform: rotate(var(--rb)); }
+    }
+ 
+    /* ── Floating hearts ── */
+    .heart {
+      position: fixed;
+      pointer-events: none; z-index: 4;
+      animation: heartFloat var(--hd) var(--hdd) linear infinite;
+      opacity: 0;
+      font-size: var(--hs);
+    }
+    @keyframes heartFloat {
+      0%   { transform: translateY(110vh) translateX(0) rotate(0deg); opacity: 0; }
+      8%   { opacity: 1; }
+      85%  { opacity: 0.6; }
+      100% { transform: translateY(-10vh) translateX(var(--hx)) rotate(var(--hr)); opacity: 0; }
+    }
+ 
+    /* ── Pollen ── */
+    .pollen {
+      position: fixed; border-radius: 50%;
+      background: radial-gradient(circle, #fff9, #f5c518);
+      pointer-events: none; z-index: 3; opacity: 0;
+      animation: pollenFloat var(--pd) var(--pdd) infinite ease-in-out;
+    }
+    @keyframes pollenFloat {
+      0%   { transform: translateY(100vh) scale(0.3); opacity: 0; }
+      10%  { opacity: 0.7; }
+      90%  { opacity: 0.3; }
+      100% { transform: translateY(-5vh) translateX(var(--px)) scale(1); opacity: 0; }
+    }
+ 
+    /* ── Click sparks ── */
+    .spark {
+      position: fixed; border-radius: 50%;
+      pointer-events: none; z-index: 9998;
+      animation: sparkOut 0.65s forwards ease-out;
+    }
+    @keyframes sparkOut {
+      0%   { transform: translate(0,0) scale(1.2); opacity: 1; }
+      100% { transform: translate(var(--sx),var(--sy)) scale(0); opacity: 0; }
+    }
+ 
+    /* ── Moon glow ── */
+    .moon {
+      position: fixed; top: 3rem; right: 3rem;
+      width: 70px; height: 70px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, #fff9e6, #f5c518 60%, #e8a000);
+      box-shadow: 0 0 40px 20px #f5c51833, 0 0 80px 40px #f5c51811;
+      z-index: 2;
+      animation: moonPulse 6s ease-in-out infinite;
+    }
+    @keyframes moonPulse {
+      0%,100% { box-shadow: 0 0 40px 20px #f5c51833, 0 0 80px 40px #f5c51811; }
+      50%      { box-shadow: 0 0 60px 30px #f5c51855, 0 0 100px 60px #f5c51822; }
+    }
+ 
+    /* ── Scroll hint ── */
+    .scroll-hint {
+      position: fixed; bottom: 200px; left: 50%;
+      transform: translateX(-50%);
+      color: #f5c51866;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      animation: blink 2.5s ease-in-out infinite;
+      z-index: 7;
+    }
+    @keyframes blink {
+      0%,100% { opacity: 0; }
+      50%      { opacity: 1; }
+    }
+  </style>
 </head>
 <body>
-    <div class="card">
-        <div class="small-text">Para la chica más especial</div>
-        <h1>Oye, <span class="name">mi amor</span> 💘</h1>
-
-        <p class="message">
-            Llevo un tiempo pensando en algo…
-            Me encantaría tener una cita muy especial contigo, solo tú y yo,
-            sin prisas y disfrutando cada momento juntos.
-        </p>
-
-        <div class="details">
-            <h2>La cita que imagino:</h2>
-            <p><strong>Fecha:</strong> Sábado 22 de febrero</p>
-            <p><strong>Hora:</strong> 7:30 p.m.</p>
-            <p><strong>Lugar:</strong> Nuestro restaurante favorito 🍝✨</p>
-            <ul>
-                <li>Cena rica y tranquila</li>
-                <li>Un paseo después, de la mano</li>
-                <li>Muchas risas, abrazos y besos</li>
-            </ul>
-        </div>
-
-        <p class="question">
-            ¿Aceptas tener esta cita conmigo?
-        </p>
-
-        <div class="buttons">
-            <!-- Puedes cambiar el href por un link a tu WhatsApp, por ejemplo -->
-            <a href="https://wa.me/3000000000?text=¡Sí,%20acepto%20la%20cita!%20💖" class="btn btn-main">
-                Claro que sí 💞
-            </a>
-            <a href="#si" class="btn btn-ghost">
-                Déjame pensarlo 2 segundos 😏
-            </a>
-        </div>
-
-        <p id="si" class="footer-text">
-            Spoiler: sé que vas a decir que sí, porque
-            <span class="signature">contigo todo es más bonito 💖</span>
-        </p>
+ 
+<div class="sky"></div>
+<canvas id="stars"></canvas>
+<div class="cursor" id="cur"></div>
+<div class="moon"></div>
+ 
+<div class="page">
+ 
+  <!-- Crown SVG -->
+  <div class="crown-wrap">
+    <svg width="90" height="54" viewBox="0 0 90 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="5,50 20,10 45,35 70,10 85,50" fill="none" stroke="#f5c518" stroke-width="2.5" stroke-linejoin="round"/>
+      <circle cx="5"  cy="50" r="4" fill="#f5c518"/>
+      <circle cx="85" cy="50" r="4" fill="#f5c518"/>
+      <circle cx="45" cy="8"  r="6" fill="#f5c518"/>
+      <circle cx="20" cy="10" r="4" fill="#e8a000"/>
+      <circle cx="70" cy="10" r="4" fill="#e8a000"/>
+      <!-- gem in crown -->
+      <polygon points="45,2 49,10 41,10" fill="#fff9e6" opacity="0.8"/>
+    </svg>
+  </div>
+ 
+  <p class="intro">Para mi</p>
+  <h1>Princesa<em>en el Día de las Flores Amarillas</em></h1>
+ 
+  <div class="divider"></div>
+ 
+  <!-- Poem -->
+  <div class="poem-wrap">
+    <div class="poem" id="poem">
+      <span class="poem-line" style="animation-delay:1.3s">Si el sol tuviera nombre,</span>
+      <span class="poem-line" style="animation-delay:1.8s">sería el tuyo.</span>
+      <span class="poem-line pause" style="animation-delay:2.3s"></span>
+      <span class="poem-line" style="animation-delay:2.5s">Hoy el mundo se viste de amarillo</span>
+      <span class="poem-line" style="animation-delay:3s">para parecerse un poco a ti,</span>
+      <span class="poem-line" style="animation-delay:3.5s">a tu risa que ilumina todo,</span>
+      <span class="poem-line" style="animation-delay:4s">a ese brillo que llevas adentro</span>
+      <span class="poem-line" style="animation-delay:4.5s">y que ninguna flor ha podido superar.</span>
+      <span class="poem-line pause" style="animation-delay:5s"></span>
+      <span class="poem-line gold" style="animation-delay:5.3s">Cada pétalo de hoy es un te quiero.</span>
+      <span class="poem-line gold" style="animation-delay:5.9s">Y yo tengo un campo infinito para darte. 🌻</span>
+      <span class="poem-line pause" style="animation-delay:6.4s"></span>
+      <span class="poem-line signature" style="animation-delay:6.8s">— Tu amor, siempre ✦</span>
     </div>
+  </div>
+ 
+</div>
+ 
+<div class="scroll-hint">✦ &nbsp; haz clic en cualquier lugar &nbsp; ✦</div>
+ 
+<!-- Ground flowers -->
+<div class="flower-row" id="gRow"></div>
+ 
+<script>
+/* ── Cursor ── */
+const cur = document.getElementById('cur');
+document.addEventListener('mousemove', e => {
+  cur.style.left = e.clientX - 10 + 'px';
+  cur.style.top  = e.clientY - 10 + 'px';
+});
+ 
+/* ── Stars ── */
+const canvas = document.getElementById('stars');
+const ctx = canvas.getContext('2d');
+function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+resizeCanvas();
+window.addEventListener('resize', resizeCanvas);
+const stars = Array.from({length: 180}, () => ({
+  x: Math.random(), y: Math.random(),
+  r: 0.4 + Math.random() * 1.4,
+  a: Math.random(),
+  da: 0.003 + Math.random() * 0.008,
+  color: Math.random() > 0.8 ? '#f5c518' : '#ffffff'
+}));
+function drawStars() {
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  stars.forEach(s => {
+    s.a += s.da;
+    const opacity = 0.3 + 0.7 * Math.abs(Math.sin(s.a));
+    ctx.beginPath();
+    ctx.arc(s.x * canvas.width, s.y * canvas.height, s.r, 0, Math.PI*2);
+    ctx.fillStyle = s.color + Math.round(opacity*255).toString(16).padStart(2,'0');
+    ctx.fill();
+  });
+  requestAnimationFrame(drawStars);
+}
+drawStars();
+ 
+/* ── Pollen ── */
+for(let i=0;i<45;i++){
+  const p = document.createElement('div');
+  p.className='pollen';
+  const sz = 3+Math.random()*8;
+  p.style.cssText=`width:${sz}px;height:${sz}px;left:${Math.random()*100}%;bottom:0;--pd:${7+Math.random()*9}s;--pdd:${Math.random()*12}s;--px:${(Math.random()-.5)*120}px;`;
+  document.body.appendChild(p);
+}
+ 
+/* ── Floating hearts ── */
+const hearts = ['💛','🌼','✨','🌻','💫','🌟'];
+for(let i=0;i<18;i++){
+  const h = document.createElement('div');
+  h.className='heart';
+  h.textContent = hearts[Math.floor(Math.random()*hearts.length)];
+  h.style.cssText=`left:${Math.random()*100}%;--hd:${9+Math.random()*10}s;--hdd:${Math.random()*14}s;--hx:${(Math.random()-.5)*100}px;--hr:${(Math.random()-.5)*60}deg;--hs:${0.9+Math.random()*1.2}rem;`;
+  document.body.appendChild(h);
+}
+ 
+/* ── Ground flowers ── */
+function makeFlower(scale, pc, cc, h){
+  const div = document.createElement('div');
+  div.className='gf';
+  const ra = `${-4+Math.random()*2}deg`, rb=`${3+Math.random()*3}deg`;
+  div.style.cssText=`--sw:${5+Math.random()*4}s;--sd:${Math.random()*2}s;--ra:${ra};--rb:${rb};`;
+  div.innerHTML=`<svg width="${Math.round(50*scale)}" height="${Math.round((h+65)*scale)}" viewBox="0 0 50 ${h+65}" xmlns="http://www.w3.org/2000/svg">
+    <line x1="25" y1="${h+60}" x2="25" y2="45" stroke="#4a7c3f" stroke-width="4.5" stroke-linecap="round"/>
+    <ellipse cx="11" cy="${h*.5}" rx="13" ry="8" fill="#4a7c3f" transform="rotate(-38,11,${h*.5})"/>
+    <ellipse cx="39" cy="${h*.35}" rx="13" ry="8" fill="#4a7c3f" transform="rotate(38,39,${h*.35})"/>
+    <g transform="translate(25,26)">
+      <ellipse cx="0" cy="-20" rx="8" ry="14" fill="${pc}" transform="rotate(0)"/>
+      <ellipse cx="0" cy="-20" rx="8" ry="14" fill="${pc}" transform="rotate(45)"/>
+      <ellipse cx="0" cy="-20" rx="8" ry="14" fill="${pc}" transform="rotate(90)"/>
+      <ellipse cx="0" cy="-20" rx="8" ry="14" fill="${pc}" transform="rotate(135)"/>
+      <ellipse cx="0" cy="-20" rx="8" ry="14" fill="${pc}" transform="rotate(180)"/>
+      <ellipse cx="0" cy="-20" rx="8" ry="14" fill="${pc}" transform="rotate(225)"/>
+      <ellipse cx="0" cy="-20" rx="8" ry="14" fill="${pc}" transform="rotate(270)"/>
+      <ellipse cx="0" cy="-20" rx="8" ry="14" fill="${pc}" transform="rotate(315)"/>
+      <circle cx="0" cy="0" r="13" fill="${cc}"/>
+      <circle cx="-3" cy="-3" r="2" fill="#ffffff22"/>
+      <circle cx="3" cy="-2" r="1.5" fill="#ffffff1a"/>
+    </g>
+  </svg>`;
+  return div;
+}
+const gr = document.getElementById('gRow');
+const palette=[['#f5c518','#2c1a08'],['#fde68a','#3d2b0e'],['#e8a000','#1a0900'],['#fff176','#4a2c00'],['#fbbf24','#2c1a08']];
+for(let i=0;i<16;i++){
+  const [pc,cc]=palette[i%palette.length];
+  gr.appendChild(makeFlower(0.6+Math.random()*0.6, pc, cc, 70+Math.random()*50));
+}
+ 
+/* ── Click sparks ── */
+document.addEventListener('click', e=>{
+  cur.style.transform='scale(3)';
+  setTimeout(()=>cur.style.transform='scale(1)',200);
+  const cols=['#f5c518','#fff9e6','#fde68a','#fff176','#e8a000','#fffbea'];
+  for(let i=0;i<16;i++){
+    const s=document.createElement('div');
+    s.className='spark';
+    const ang=(i/16)*Math.PI*2;
+    const dist=50+Math.random()*70;
+    const sz=5+Math.random()*9;
+    s.style.cssText=`left:${e.clientX}px;top:${e.clientY}px;width:${sz}px;height:${sz}px;background:${cols[Math.floor(Math.random()*cols.length)]};--sx:${Math.cos(ang)*dist}px;--sy:${Math.sin(ang)*dist}px;`;
+    document.body.appendChild(s);
+    setTimeout(()=>s.remove(),650);
+  }
+});
+</script>
 </body>
 </html>
